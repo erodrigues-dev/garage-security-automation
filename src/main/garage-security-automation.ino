@@ -8,7 +8,8 @@ RCSwitch rc = RCSwitch();
 
 bool armed = false;
 
-void setup(){
+void setup()
+{
     Serial.begin(115200);
 
     pinMode(led, OUTPUT);
@@ -17,14 +18,16 @@ void setup(){
     Serial.println("ESP32 initialized");
 }
 
-void loop(){
-    
+void loop()
+{
     handleRC();
 }
 
-void handleRC(){
+void handleRC()
+{
 
-    if(!rc.available()) return;
+    if (!rc.available())
+        return;
 
     ulong code = rc.getReceivedValue();
 
@@ -32,19 +35,23 @@ void handleRC(){
     Serial.print(code);
     Serial.println("");
 
-    if(verifyCode(code)) {
+    if (verifyCode(code))
+    {
 
         digitalWrite(led, !armed);
         armed = !armed;
 
-        if(armed) Serial.println("System security ARMED");
-        else Serial.println("System security DISARMED");
+        if (armed)
+            Serial.println("System security ARMED");
+        else
+            Serial.println("System security DISARMED");
     }
 
     rc.resetAvailable();
 }
 
-bool verifyCode(ulong code) {
+bool verifyCode(ulong code)
+{
     ulong btn1 = 143618853;
 
     return code == btn1;
