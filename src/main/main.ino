@@ -105,10 +105,16 @@ void control_leds()
 
 void control_siren()
 {
+  bool siren_active = digitalRead(SIREN);
+  if(siren_active){
+    digitalWrite(SIREN, LOW);
+    delay(300);
+  }
+
   if (armed)
-    siren_two_touchs();
-  else
     siren_long_touch();
+  else
+    siren_two_touchs();
 }
 
 void siren_two_touchs()
