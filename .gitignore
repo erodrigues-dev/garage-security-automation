@@ -1,1 +1,3 @@
-.vscode
+.vscode/*
+!.vscode/arduino.json
+!.vscode/extensions.json
