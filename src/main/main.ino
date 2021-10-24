@@ -19,7 +19,7 @@ void setup()
   pinMode(LED_ARMED, OUTPUT);
   pinMode(LED_DISARMED, OUTPUT);
   pinMode(SIREN, OUTPUT);
-  pinMode(SENSOR_1, INPUT_PULLUP);
+  pinMode(SENSOR_1, INPUT_PULLDOWN);
 
   rc.enableReceive(RX);
 
@@ -143,7 +143,9 @@ void handle_presence_sensor()
 {
   if(!armed) return;
 
-  int active = !digitalRead(SENSOR_1);
+  int value = digitalRead(SENSOR_1);
+
+  bool active = value == 0;
 
   if(active && !fired) {
     fired = true;
