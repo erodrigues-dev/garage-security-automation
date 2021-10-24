@@ -120,18 +120,18 @@ void control_siren()
 void siren_two_touchs()
 {
   digitalWrite(SIREN, HIGH);
-  delay(500);
+  delay(300);
   digitalWrite(SIREN, LOW);
-  delay(500);
+  delay(300);
   digitalWrite(SIREN, HIGH);
-  delay(500);
+  delay(300);
   digitalWrite(SIREN, LOW);
 }
 
 void siren_long_touch()
 {
   digitalWrite(SIREN, HIGH);
-  delay(1000);
+  delay(600);
   digitalWrite(SIREN, LOW);
 }
 
